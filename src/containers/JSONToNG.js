@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import SplitPane from "react-split-pane";
-import {Controlled as CodeMirror} from 'react-codemirror2';
-let json2ts = require('json2ts');
-require('codemirror/lib/codemirror.css');
-require('codemirror/theme/material.css');
-require('codemirror/theme/neat.css');
-require('codemirror/mode/xml/xml.js');
-require('codemirror/mode/javascript/javascript.js');
+import { Controlled as CodeMirror } from "react-codemirror2";
+let json2ts = require("json2ts");
+require("codemirror/lib/codemirror.css");
+require("codemirror/theme/material.css");
+require("codemirror/theme/neat.css");
+require("codemirror/mode/xml/xml.js");
+require("codemirror/mode/javascript/javascript.js");
 
 class JsonToTs extends Component {
   constructor(props) {
@@ -14,36 +14,36 @@ class JsonToTs extends Component {
     this.state = this.getState();
   }
 
-  isValidJSONString = (str) => {
+  isValidJSONString = str => {
     try {
       JSON.parse(str);
     } catch (e) {
       return false;
     }
     return true;
-  }
+  };
 
   saveState = () => {
-    localStorage.setItem('_jsonToTs', JSON.stringify(this.state));
-  }
+    localStorage.setItem("_jsonToTs", JSON.stringify(this.state));
+  };
 
   getState = () => {
-    let data = localStorage.getItem('_jsonToTs');
-    if(data){
+    let data = localStorage.getItem("_jsonToTs");
+    if (data) {
       data = JSON.parse(data);
-    }else{
+    } else {
       data = {
-        value : '{}',
-        typescript : ''
+        value: "{}",
+        typescript: ""
       };
     }
     return data;
-  }
+  };
 
   updateValue = (editor, data, value) => {
-    this.setState({ value },()=>{
+    this.setState({ value }, () => {
       let data = this.state.value;
-      let typescript = '';
+      let typescript = "";
       if (this.isValidJSONString(data)) {
         typescript = json2ts.convert(data);
       }
@@ -57,13 +57,13 @@ class JsonToTs extends Component {
         split="vertical"
         minSize={400}
         defaultSize={400}
-        style={{ position: 'relative', minHeight: '100vh' }}
+        style={{ position: "relative", minHeight: "100vh" }}
       >
         <CodeMirror
           value={this.state.value}
           options={{
-            mode: 'application/ld+json',
-            theme: 'material',
+            mode: "application/ld+json",
+            theme: "material",
             lineNumbers: true
           }}
           onBeforeChange={this.updateValue}
@@ -71,8 +71,8 @@ class JsonToTs extends Component {
         <CodeMirror
           value={this.state.typescript}
           options={{
-            mode: 'application/ld+json',
-            theme: 'material',
+            mode: "application/ld+json",
+            theme: "material",
             lineNumbers: true
           }}
         />
