@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Layout } from "antd";
-import Module from "./containers/Module";
 import JSONToNG from "./containers/JSONToNG";
 import "./App.css";
 import Nav from "./components/Nav";
@@ -30,8 +29,7 @@ class App extends Component {
                 minHeight: "100vh"
               }}
             >
-              <Route path="/" exact component={Module} />
-              <Route path="/json2ng" component={JSONToNG} />
+              <Route path="/" component={JSONToNG} />
             </Content>
           </Layout>
         </Layout>
