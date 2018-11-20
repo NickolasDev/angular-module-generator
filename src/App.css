@@ -53,3 +53,7 @@
     .Resizer.disabled:hover {
       border-color: transparent;
     }
+
+.react-codemirror2, .react-codemirror2 > div{
+    height: 100vh;
+}

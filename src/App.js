@@ -15,7 +15,7 @@ class App extends Component {
           <Nav />
         </Sider>
         <Layout style={{ marginLeft: 200 }}>
-        <Content style={{ margin: '0px 16px 0', overflow: 'initial', minHeight: '100vh' }}>
+        <Content style={{ margin: '0px 0px 0', overflow: 'initial', minHeight: '100vh' }}>
                 <Route path="/" exact component={Module} />
                 <Route path="/json2ts" component={JsonToTs} />
           </Content>

@@ -14,7 +14,7 @@ class Nav extends Component {
         <Menu.Item key="2">
           <Link to="/json2ts" className="nav-text">
             <Icon type="code" />
-            Json to TS
+            Json to Interface
           </Link>
         </Menu.Item>
       </Menu>;
